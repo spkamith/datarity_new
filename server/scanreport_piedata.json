@@ -1,0 +1,21 @@
+{
+	"SCANRESULTS": 
+	[
+		{
+	    	"name": "Credit Card",
+	    	"data": 10000
+	  	},
+	  	{
+	    	"name": "SSN",
+	    	"data": 9000
+	  	},
+	  	{
+	    	"name": "Phone Number",
+	    	"data": 102000
+	  	},
+	  	{
+	    	"name": "Email ID",
+	    	"data": 9000
+	  	}
+	]
+}

@@ -20,7 +20,8 @@
     "items": [
       {
         "text": "All",
-        "iconCls": "chart_bar",
+        //"iconCls": "chart_bar",
+        "iconCls": "treeleaf",
         "menu_id": "scan_all_menu",
         "id": "scan_all_item"
       },

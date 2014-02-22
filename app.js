@@ -5,7 +5,7 @@ Ext.application({
     launch: function() {
 
         this.viewport = Ext.ComponentQuery.query('viewport')[0];
-        this.centerPanel = Ext.ComponentQuery.query('#centerPanel')[0]
+        this.centerPanel = Ext.ComponentQuery.query('#dashboardbox')[0]
         var c = this.getController('Viewport');
         c.init();
     },
@@ -13,7 +13,7 @@ Ext.application({
     addController:function(controllerName, actionName){
         var controller = this.getController(controllerName);
         controller.init(this);
-        //controller.loadView();
+        controller.loadView();
     },
 
     removeController:function(controllerName){
@@ -36,12 +36,13 @@ Ext.application({
 
 
     },
-   /* setMainView: function(view){
+   setMainView: function(view){
         var center = this.centerPanel;
         if(!center.contains(view)) {
             center.add(view);
         }
-       // center.setActiveTab(view);
-    }*/
+       //center.setActiveTab(view);
+       center.doLayout();
+    }
 
 });

@@ -24,8 +24,10 @@ Ext.define('DATARITY.view.Viewport', {
                     height: 42
                 },{
                     id: 'app-portal',
+                    itemId:'dashboardbox',
                     border:false,
-                    xtype: 'portletpanel',
+                    autoScroll: true,
+                    xtype: 'panel',
                     region: 'center',
                 },{
                     xtype : 'accpanel',

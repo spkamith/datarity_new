@@ -12,14 +12,13 @@ Ext.define('DATARITY.view.portal.PortalPanel', {
     cls: 'x-portal',
     bodyCls: 'x-portal-body',
     defaultType: 'portalcolumn',
-    autoScroll: true,
-
     initComponent : function() {
         var me = this;
 
         // Implement a Container beforeLayout call from the layout to this Container
         this.layout = {
             type : 'column'
+             
         };
         this.callParent();
 
@@ -34,7 +33,7 @@ Ext.define('DATARITY.view.portal.PortalPanel', {
     },
 
     // Set columnWidth, and set first and last column classes to allow exact CSS targeting.
-    beforeLayout: function() {
+   /* beforeLayout: function() {
         var items = this.layout.getLayoutItems(),
             len = items.length,
             i = 0,
@@ -48,7 +47,7 @@ Ext.define('DATARITY.view.portal.PortalPanel', {
         items[0].addCls('x-portal-column-first');
         items[len - 1].addCls('x-portal-column-last');
         return this.callParent(arguments);
-    },
+    },*/
 
     // private
     initEvents : function(){

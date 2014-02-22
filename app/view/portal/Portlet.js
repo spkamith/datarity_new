@@ -16,7 +16,7 @@ Ext.define('DATARITY.view.portal.Portlet', {
     /*draggable: {
         moveOnDrag: true    
     },*/
-    style:'maxWidth:265px !important',
+    //style:'maxWidth:265px !important',
     //style:'minHeight:170px !important',
     cls: 'x-portlet',
 

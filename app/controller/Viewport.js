@@ -73,7 +73,8 @@ Ext.define('DATARITY.controller.Viewport', {
                 select: this.onTreepanelSelect
             }
         });
-        //this.application.addController("dashboard");
         this.onPanelRender();
+
+        this.application.addController("PortletPanel");
     }
 });

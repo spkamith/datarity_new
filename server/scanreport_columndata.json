@@ -1,0 +1,21 @@
+{
+	"SCANCOLUMNRESULTS": 
+	[
+		{
+	    	"name": "Credit Card",
+	    	"data1": 10
+	  	},
+	  	{
+	    	"name": "SSN",
+	    	"data1": 30
+	  	},
+	  	{
+	    	"name": "Phone Number",
+	    	"data1": 80
+	  	},
+	  	{
+	    	"name": "Email ID",
+	    	"data1": 20
+	  	}
+	]
+}
