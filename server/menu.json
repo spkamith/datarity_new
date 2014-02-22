@@ -124,6 +124,19 @@
         "id": "log_email_item"
       }     
     ]
-  } 
+  },
+  {
+    "title": "Settings",
+    "iconCls": "money",
+    "id": "log_tree",
+    "items": [
+      {
+        "text": "Basic",
+        "iconCls": "basic_cls",
+        "menu_id": "settings_basic_menu",
+        "id": "settings_basic_item"
+      }    
+    ]
+  }  
 ]
 }
