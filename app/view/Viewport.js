@@ -46,7 +46,7 @@ Ext.define('DATARITY.view.Viewport', {
                     titleCollapse:true,
                     listeners: {
                        afterrender : function () {
-                            console.log("kamith");
+
                        }
                     }
                 }/*{

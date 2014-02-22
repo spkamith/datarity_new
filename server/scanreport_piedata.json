@@ -2,7 +2,7 @@
 	"SCANRESULTS": 
 	[
 		{
-	    	"name": "Credit Card",
+	    	"name": "Credit",
 	    	"data": 10000
 	  	},
 	  	{
@@ -10,7 +10,7 @@
 	    	"data": 9000
 	  	},
 	  	{
-	    	"name": "Phone Number",
+	    	"name": "Ph No",
 	    	"data": 102000
 	  	},
 	  	{

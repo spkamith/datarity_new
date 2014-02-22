@@ -15,7 +15,7 @@ Ext.define('DATARITY.controller.Viewport', {
 
 
     onPanelRender: function(abstractcomponent, options) {
-        console.log(abstractcomponent);
+        
         this.getMenuStore().load(function(records, op, success){
 
             var menuPanel = Ext.ComponentQuery.query('accpanel')[0];

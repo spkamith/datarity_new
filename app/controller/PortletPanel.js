@@ -29,7 +29,6 @@ Ext.define('DATARITY.controller.PortletPanel', {
     },
 
     loadView: function() {
-        console.log(this);
         this.application.setMainView(this.getPortletPanelView());
     }
 });

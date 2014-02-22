@@ -40,16 +40,19 @@
             position: 'right'
         },
         insetPadding: 60,
-        width:550,
-        height:400,
+         width:500,
+        height:350,
         theme: 'Base:gradients',
         series: [{
             type: 'pie',
-            field: 'data',
+            //field: 'data',
+            angleField: 'data',
             showInLegend: true,
             donut: 35,
             tips: {
                 trackMouse: true,
+                width: 140,
+                height: 28,
                 renderer: function(storeItem, item) {
                     //calculate percentage.
                     var total = 0;
@@ -114,8 +117,8 @@ Ext.define('scanReportColumnData', {
         style: 'background:#fff',
         animate: true,
         shadow: true,
-         width:550,
-        height:400,
+         width:500,
+         height:350,
         store: scanReportColumnDataStore,
         axes: [{
             type: 'Numeric',
@@ -139,8 +142,10 @@ Ext.define('scanReportColumnData', {
             highlight: true,
             tips: {
                 trackMouse: true,
+                width: 140,
+                height: 28,
                 renderer: function(storeItem, item) {
-                    this.setTitle(storeItem.get('name') + ': ' + storeItem.get('data1') + ' $');
+                    this.setTitle(storeItem.get('name') + ': ' + storeItem.get('data1') + 'K');
                 }
             },
             label: {
@@ -264,7 +269,7 @@ Ext.define('DATARITY.view.PortletPanel', {
                     }
                 }
             },{
-                xtype : 'panel',
+                xtype : 'container',
                 columnWidth: 1,
                // align : 'center',
                 border:false,
@@ -272,41 +277,39 @@ Ext.define('DATARITY.view.PortletPanel', {
                     type: 'hbox',
                     align: 'stretch'
                 },
-                style : 'padding:10px;',
+                style : 'padding:20px 0px 30px 0px;',
                 items: [{
-                    xtype : 'spacer',
+                    xtype : 'tbspacer',
                     border:false,
-                    flex:1
+                    flex:3
                 },{
                    // flex : 1,
                     xtype : 'button',
                     width : 150,
                     frame : true,
-                    border:true,
                     scale   : 'large',
                     text : 'Scan'
                 },{
-                    xtype : 'spacer',
+                    xtype : 'tbspacer',
                     border:false,
-                    flex:1
+                    width:50
                 },{
                     //flex : 1,
                     xtype : 'button',
                     width : 150,
                     frame : true,
-                    border:true,
                     scale   : 'large',
                     text : 'Mask'
                 },{
-                    xtype : 'spacer',
+                    xtype : 'tbspacer',
                     border:false,
-                    flex:1
+                    flex:3
                 }]
             },{
                 xtype:'panel',
-                columnWidth: 0.45,
+                columnWidth: 0.4,
                 //  width: 800,
-               // height: 400,
+                height: 350,
                 title: 'Scan Results',
                 items: scanReportPieChart//,
                /* tbar: [{
@@ -319,14 +322,27 @@ Ext.define('DATARITY.view.PortletPanel', {
                         }
                 }]*/
             },{
-                xtype : 'spacer',
-                border:false,
-                columnWidth:0.07,
+
+                xtype : 'container',
+                columnWidth:0.19,
+                width:100,
+                 layout: {
+                    type: 'hbox',
+                    align: 'stretch'
+                },
+                 items : [{
+                   xtype : 'tbspacer',
+                    border:false,
+                    flex:1
+                },{
+                    html:'&nbsp;',
+                    border:false
+                }]
             },{
                 xtype:'panel',
-                columnWidth: 0.45,
+                columnWidth: 0.4,
                 //  width: 800,
-               // height: 400,
+                height: 350,
                 title: 'Scan Results 2',
                 items: scanReportColumnChart
             }]
