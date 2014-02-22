@@ -1,9 +1,7 @@
-Ext.define('DATARITY.view.portal.PortletPanel', {
-    extend: 'DATARITY.view.app.PortalPanel',    
+Ext.define('DATARITY.view.PortletPanel', {
+    extend: 'DATARITY.view.portal.PortalPanel',    
     
     alias: 'widget.portletpanel',
-
-    uses: ['DATARITY.util.Constants'],
 
     getTools: function(){
         return [{

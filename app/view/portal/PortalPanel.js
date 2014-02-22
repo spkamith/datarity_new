@@ -3,11 +3,11 @@
  * @extends Ext.panel.Panel
  * A {@link Ext.panel.Panel Panel} class used for providing drag-drop-enabled portal layouts.
  */
-Ext.define('DATARITY.view.app.PortalPanel', {
+Ext.define('DATARITY.view.portal.PortalPanel', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.portalpanel',
 
-    requires: ['DATARITY.view.app.PortalColumn'],
+    requires: ['DATARITY.view.portal.PortalColumn'],
 
     cls: 'x-portal',
     bodyCls: 'x-portal-body',
@@ -53,7 +53,7 @@ Ext.define('DATARITY.view.app.PortalPanel', {
     // private
     initEvents : function(){
         this.callParent();
-        this.dd = Ext.create('DATARITY.view.app.PortalDropZone', this, this.dropConfig);
+        this.dd = Ext.create('DATARITY.view.portal.PortalDropZone', this, this.dropConfig);
     },
 
     // private

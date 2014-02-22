@@ -3,11 +3,11 @@
  * @extends Ext.container.Container
  * A layout column class used internally be {@link Ext.app.PortalPanel}.
  */
-Ext.define('DATARITY.view.app.PortalColumn', {
+Ext.define('DATARITY.view.portal.PortalColumn', {
     extend: 'Ext.container.Container',
     alias: 'widget.portalcolumn',
 
-    requires: ['DATARITY.view.app.Portlet'],
+    requires: ['DATARITY.view.portal.Portlet'],
 
     layout: 'anchor',
     defaultType: 'portlet',

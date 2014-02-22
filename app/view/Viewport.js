@@ -5,13 +5,7 @@ Ext.define('DATARITY.view.Viewport', {
         type: 'border'
     },
 	uses: [
-        'DATARITY.view.app.PortalPanel', 
-        'DATARITY.view.app.PortalColumn',
-        'DATARITY.view.portal.PortletPanel',
-        'DATARITY.view.portal.WestMenu',
-       // 'DATARITY.view.portlet.GridPortlet', 
-       // 'DATARITY.view.portlet.ChartPortlet',
-        'DATARITY.util.Constants'
+        'DATARITY.view.PortletPanel'
     ],
     requires: [
         'DATARITY.view.Menu',

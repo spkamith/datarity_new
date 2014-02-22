@@ -3,7 +3,7 @@
  * @extends Ext.panel.Panel
  * A {@link Ext.panel.Panel Panel} class that is managed by {@link Ext.app.PortalPanel}.
  */
-Ext.define('DATARITY.view.app.Portlet', {
+Ext.define('DATARITY.view.portal.Portlet', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.portlet',
     layout: 'fit',
