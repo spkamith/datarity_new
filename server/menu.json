@@ -134,26 +134,26 @@
       {
         "text": "Scanning Patterns",
         "iconCls": "all_cls",
-        "menu_id": "log_all_menu",
-        "id": "log_all_item"
+        "menu_id": "config_scanning_patterns",
+        "id": "config_scanning_patterns"
       },
       {
         "text": "Data Types",
         "iconCls": "all_cls",
-        "menu_id": "log_all_menu",
-        "id": "log_all_item"
+        "menu_id": "config_dt",
+        "id": "config_dt"
       },
       {
         "text": "My PIIs",
         "iconCls": "all_cls",
-        "menu_id": "log_all_menu",
-        "id": "log_all_item"
+        "menu_id": "config_pii",
+        "id": "config_pii"
       },                 
       {
         "text": "Hadoop FS",
         "iconCls": "all_cls",
-        "menu_id": "log_all_menu",
-        "id": "log_all_item"
+        "menu_id": "config_hdfs",
+        "id": "config_hdfs"
       },
       {
         "text": "HBase",

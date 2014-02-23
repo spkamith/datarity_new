@@ -21,7 +21,7 @@
         proxy: {
             type: 'ajax',
             actionMethods: {
-                read: 'POST'
+                read: 'GET'
             },
             url: './server/dataritysample_1.json',
             extraParams: {
