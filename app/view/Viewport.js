@@ -21,7 +21,7 @@ Ext.define('DATARITY.view.Viewport', {
                     id: 'datarityHeaderBox',
                     region: 'north',
                     contentEl:'datarityHeader',
-                    height: 42
+                   // height: 80
                 },{
                     id: 'app-portal',
                     itemId:'dashboardbox',

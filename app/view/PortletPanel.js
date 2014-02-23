@@ -271,19 +271,19 @@ Ext.define('DATARITY.view.PortletPanel', {
             },{
                 xtype : 'container',
                 columnWidth: 1,
-               // align : 'center',
-                border:false,
+               align : 'center',
+                border:true,
                 layout: {
                     type: 'hbox',
                     align: 'stretch'
                 },
-                style : 'padding:20px 0px 30px 0px;',
+                style : 'padding:20px 0px 20px 0px;',
                 items: [{
                     xtype : 'tbspacer',
                     border:false,
                     flex:3
                 },{
-                   // flex : 1,
+                   flex : 1,
                     xtype : 'button',
                     width : 150,
                     frame : true,
@@ -292,9 +292,9 @@ Ext.define('DATARITY.view.PortletPanel', {
                 },{
                     xtype : 'tbspacer',
                     border:false,
-                    width:50
+                    width:30
                 },{
-                    //flex : 1,
+                    flex : 1,
                     xtype : 'button',
                     width : 150,
                     frame : true,
@@ -307,10 +307,11 @@ Ext.define('DATARITY.view.PortletPanel', {
                 }]
             },{
                 xtype:'panel',
-                columnWidth: 0.4,
+                columnWidth: 0.5,
                 //  width: 800,
                 height: 350,
-                title: 'Scan Results',
+                border:false,
+                //title: 'Scan Results',
                 items: scanReportPieChart//,
                /* tbar: [{
                         enableToggle: true,
@@ -322,28 +323,12 @@ Ext.define('DATARITY.view.PortletPanel', {
                         }
                 }]*/
             },{
-
-                xtype : 'container',
-                columnWidth:0.19,
-                width:100,
-                 layout: {
-                    type: 'hbox',
-                    align: 'stretch'
-                },
-                 items : [{
-                   xtype : 'tbspacer',
-                    border:false,
-                    flex:1
-                },{
-                    html:'&nbsp;',
-                    border:false
-                }]
-            },{
                 xtype:'panel',
-                columnWidth: 0.4,
+                columnWidth: 0.5,
                 //  width: 800,
+                border:false,
                 height: 350,
-                title: 'Scan Results 2',
+                //title: 'Scan Results 2',
                 items: scanReportColumnChart
             }]
             
