@@ -3,17 +3,17 @@
    "results":[
       {
          "id":0,
-         "totalSecurityEscape":1999761,
-         "totalCreditCardNum":500022,
-         "totalPhoneNum":499747,
-         "totalEmailId":499884,
-         "totalSsnNum":500108,
+         "totalSecurityEscape":199339761,
+         "totalCreditCardNum":500353022,
+         "totalPhoneNum":4997353247,
+         "totalEmailId":43532599884,
+         "totalSsnNum":500135308,
          "fileNameToSecurityEscape":{
-            "/Users/barath/b/barath/hackathon/s/inputfiles/abc0.txt":400190,
-            "/Users/barath/b/barath/hackathon/s/inputfiles/diwali.csv":399837,
-            "/Users/barath/b/barath/hackathon/s/inputfiles/water.txt":199858,
-            "/Users/barath/b/barath/hackathon/s/inputfiles/record.txt":599960,
-            "/Users/barath/b/barath/hackathon/s/inputfiles/test.txt":299916
+            "/Users/barath/b/barath/hackathon/s/inputfiles/abc0.txt":40019230,
+            "/Users/barath/b/barath/hackathon/s/inputfiles/diwali.csv":39983327,
+            "/Users/barath/b/barath/hackathon/s/inputfiles/water.txt":19985832,
+            "/Users/barath/b/barath/hackathon/s/inputfiles/record.txt":59996032,
+            "/Users/barath/b/barath/hackathon/s/inputfiles/test.txt":2999133
          },
          "fileNameToSecurityTypeToEscape":{
             "abc0.txt":{

@@ -379,7 +379,12 @@ Ext.define('DATARITY.view.PortletPanel', {
     
     initComponent: function() {
 
-    
+        var scanProgressBar = Ext.create('Ext.ProgressBar', {
+           //renderTo: Ext.getBody(),
+           width: 300,
+           id:'scanProgressBarId',
+           itemId:'scanProgressBarItemId'
+        });
 
        var creditcard_tpl =  new Ext.XTemplate(
                         '<div><div class="dashboard-stat blue" style="background-color: #27a9e3;">',
@@ -482,14 +487,15 @@ Ext.define('DATARITY.view.PortletPanel', {
                 },{
                    flex : 1,
                     xtype : 'button',
+                    itemId:'scanButton',
                     width : 150,
                     frame : true,
                     scale   : 'large',
-                    text : 'Scan',
+                    text : 'Scan'/*,
                     handler : function () {
                         scanReportAllDataStore.getProxy().url = './server/dataritysample_2.json';
                         scanReportAllDataStore.load();
-                    }
+                    }*/
                 },{
                     xtype : 'tbspacer',
                     border:false,
@@ -502,6 +508,37 @@ Ext.define('DATARITY.view.PortletPanel', {
                     scale   : 'large',
                     text : 'Mask'
                 },{
+                    xtype : 'tbspacer',
+                    border:false,
+                    flex:3
+                }]
+            },{
+                xtype : 'container',
+                id:'scanProgressBarContainer',
+                itemId:'scanProgressBarContainerItemId',
+                columnWidth: 1,
+                //hidden:true,
+                align : 'center',
+                border:true,
+                layout: {
+                    type: 'hbox',
+                    align: 'stretch'
+                },
+                style : 'padding:20px 0px 20px 0px;',
+                items: [{
+                    xtype : 'tbspacer',
+                    border:false,
+                    flex:3
+                },scanProgressBar,
+                /*{
+                    xtype:'panel',
+                    html:'test'
+                },*/
+                {
+                    xtype : 'tbspacer',
+                    border:false,
+                    width:30
+                },,{
                     xtype : 'tbspacer',
                     border:false,
                     flex:3
@@ -547,5 +584,6 @@ Ext.define('DATARITY.view.PortletPanel', {
         });
                 
         this.callParent(arguments);
+        Ext.getCmp('scanProgressBarContainer').setVisible(false)
     }
 });
