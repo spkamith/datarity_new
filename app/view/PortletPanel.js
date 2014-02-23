@@ -84,10 +84,10 @@
                     selectedStoreItem = series.items[0].storeItem;
                     selectItem(selectedStoreItem);
                 }
-                else if( series.items[0].storeItem.get("name") != selectedStoreItem.get("name")) {
+                /*else if( series.items[0].storeItem.get("name") != selectedStoreItem.get("name")) {
                     selectedStoreItem = series.items[0].storeItem;   
                     selectItem(selectedStoreItem);
-                }
+                }*/
                 var creditcard_portletData = {totalCreditCardNum: DATARITY.app.formatNumber(scanReportAllDataStore.data.items[0].data.totalCreditCardNum)};
                 Ext.getCmp("creditcard_portlet").update(creditcard_portletData);
 
