@@ -127,14 +127,14 @@ Ext.define('scanReportColumnData', {
             label: {
                 renderer: Ext.util.Format.numberRenderer('0,0')
             },
-            title: 'Number of Hits',
+            title: 'Number of PIIs',
             grid: true,
             minimum: 0
         }, {
             type: 'Category',
             position: 'bottom',
             fields: ['name'],
-            title: 'Scan Report'
+            title: 'Directory Report'
         }],
         series: [{
             type: 'column',
@@ -312,7 +312,7 @@ Ext.define('DATARITY.view.PortletPanel', {
                 height: 350,
                 border:false,
                 //title: 'Scan Results',
-                items: scanReportPieChart//,
+                items:scanReportColumnChart //,
                /* tbar: [{
                         enableToggle: true,
                         pressed: false,
@@ -329,7 +329,7 @@ Ext.define('DATARITY.view.PortletPanel', {
                 border:false,
                 height: 350,
                 //title: 'Scan Results 2',
-                items: scanReportColumnChart
+                items: scanReportPieChart
             }]
             
         });

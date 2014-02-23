@@ -2,20 +2,38 @@
 	"SCANCOLUMNRESULTS": 
 	[
 		{
-	    	"name": "Credit Card",
-	    	"data1": 10
+	    	"name": "abc0.txt",
+	    	"data1": 400190
 	  	},
 	  	{
-	    	"name": "SSN",
-	    	"data1": 30
+	    	"name": "diwali.csv",
+	    	"data1": 339837
 	  	},
 	  	{
-	    	"name": "Phone Number",
-	    	"data1": 80
+	    	"name": "water.txt",
+	    	"data1": 299858
 	  	},
 	  	{
-	    	"name": "Email ID",
-	    	"data1": 20
-	  	}
+	    	"name": "record.txt",
+	    	"data1": 199916
+	  	},
+		{
+	    	"name": "abc0.txt",
+	    	"data1": 400190
+	  	},
+	  	{
+	    	"name": "diwali.csv",
+	    	"data1": 339837
+	  	},
+	  	{
+	    	"name": "water.txt",
+	    	"data1": 299858
+	  	},
+	  	{
+	    	"name": "record.txt",
+	    	"data1": 199916
+	  	},
+	  		  	
 	]
 }
+
