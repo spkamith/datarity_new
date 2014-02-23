@@ -388,7 +388,7 @@ Ext.define('DATARITY.view.PortletPanel', {
 
        var creditcard_tpl =  new Ext.XTemplate(
                         '<div><div class="dashboard-stat blue" style="background-color: #27a9e3;">',
-                        '<div class="visual"><i class="fa fa-comments"></i></div>',
+                        '<div class="visual"><i class="fa fa-credit-card"></i></div>',
                         '<div class="details"><div class="number">{totalCreditCardNum} +</div><div class="desc">Credit Cards</div></div>',
                         '<a class="more" href="#">View details <i class="m-icon-swapright m-icon-white"></i></a></div></div>',
                         { compiled : true }
@@ -396,7 +396,7 @@ Ext.define('DATARITY.view.PortletPanel', {
                     );
        var ssn_tpl =  new Ext.XTemplate(
                         '<div><div class="dashboard-stat green" style="background-color: #28b779;">',
-                        '<div class="visual"><i class="fa fa-shopping-cart"></i></div>',
+                        '<div class="visual"><i class="fa fa-users"></i></div>',
                         '<div class="details"><div class="number">{totalSsnNum} +</div><div class="desc">SSNs</div></div>',
                         '<a class="more" href="#">View details <i class="m-icon-swapright m-icon-white"></i></a></div></div>',
                         { compiled : true }
@@ -404,7 +404,7 @@ Ext.define('DATARITY.view.PortletPanel', {
                     );
        var phoneno_tpl =  new Ext.XTemplate(
                         '<div><div class="dashboard-stat purple" style="background-color: #852b99;">',
-                        '<div class="visual"><i class="fa fa-globe"></i></div>',
+                        '<div class="visual"><i class="fa fa-phone"></i></div>',
                         '<div class="details"><div class="number">{totalPhoneNum} +</div><div class="desc">Phone Numbers</div></div>',
                         '<a class="more" href="#">View details <i class="m-icon-swapright m-icon-white"></i></a></div></div>',
                         { compiled : true }
@@ -412,7 +412,7 @@ Ext.define('DATARITY.view.PortletPanel', {
                     );
        var email_tpl =  new Ext.XTemplate(
                         '<div> <div class="dashboard-stat yellow" style="background-color: #ffb848;">',
-                        '<div class="visual"><i class="fa fa-bar-chart-o"></i></div>',
+                        '<div class="visual"><i class="fa fa-envelope"></i></div>',
                         '<div class="details"><div class="number">{totalEmailId}</div><div class="desc">EMail Ids</div></div>',
                         '<a class="more" href="#">View details <i class="m-icon-swapright m-icon-white"></i></a></div></div>',
                         { compiled : true }

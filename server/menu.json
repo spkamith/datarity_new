@@ -58,7 +58,8 @@
     "items": [
        {
         "text": "All",
-        "iconCls": "all_cls",
+        //"iconCls": "all_cls",
+        "iconCls": "treeleaf",
         "menu_id": "mask_all_menu",
         "id": "mask_all_item"
       },
@@ -124,6 +125,61 @@
         "id": "log_email_item"
       }     
     ]
-  } 
+  },
+  {
+    "title": "Config",
+    "iconCls": "money",
+    "id": "log_tree",
+    "items": [
+      {
+        "text": "Scanning Patterns",
+        "iconCls": "all_cls",
+        "menu_id": "log_all_menu",
+        "id": "log_all_item"
+      },
+      {
+        "text": "Data Types",
+        "iconCls": "all_cls",
+        "menu_id": "log_all_menu",
+        "id": "log_all_item"
+      },
+      {
+        "text": "My PIIs",
+        "iconCls": "all_cls",
+        "menu_id": "log_all_menu",
+        "id": "log_all_item"
+      },                 
+      {
+        "text": "Hadoop FS",
+        "iconCls": "all_cls",
+        "menu_id": "log_all_menu",
+        "id": "log_all_item"
+      },
+      {
+        "text": "HBase",
+        "iconCls": "creditcard_cls",
+        "menu_id": "log_creditcard_menu",
+        "id": "log_creditcard_item"
+      },
+      {
+        "text": "Cassandra",
+        "iconCls": "ssncls",
+        "menu_id": "log_ssn_menu",
+        "id": "log_ssn_item"
+      },
+      {
+        "text": "Log Folders",
+        "iconCls": "phno_cls",
+        "menu_id": "log_phno_menu",
+        "id": "mask_phno_item"
+      },
+      {
+        "text": "Payment Options",
+        "iconCls": "emailid_cls",
+        "menu_id": "log_email_menu",
+        "id": "log_email_item"
+      }     
+    ]
+  }   
 ]
 }
