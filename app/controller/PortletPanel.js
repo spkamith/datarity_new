@@ -26,6 +26,7 @@ Ext.define('DATARITY.controller.PortletPanel', {
             
            
         });
+        scanReportAllDataStore.load();
     },
 
     loadView: function() {

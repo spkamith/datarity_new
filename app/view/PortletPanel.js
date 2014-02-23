@@ -1,3 +1,110 @@
+
+     Ext.define('scanReportAllData', {
+        extend: 'Ext.data.Model',
+        fields: [
+            {name: 'id'},
+            {name: 'totalSecurityEscape',  type: 'int'},
+            {name: 'totalCreditCardNum', mapping: 'totalCreditCardNum', type: 'int'},
+            {name: 'totalPhoneNum', mapping: 'totalPhoneNum', type: 'int'},
+            {name: 'totalEmailId',  type: 'int'},
+            {name: 'totalSsnNum',  type: 'int'},
+            {name: 'fileNameToSecurityEscape'},
+            {name: 'fileNameToSecurityTypeToEscape'}
+        ]
+    });
+
+    // create the Data Store
+    var scanReportAllDataStore = Ext.create('Ext.data.Store', {
+        id: 'scanReportAllDataStore',
+        model: 'scanReportAllData',
+        autoLoad:false,
+        proxy: {
+            type: 'ajax',
+            actionMethods: {
+                read: 'POST'
+            },
+            url: './server/dataritysample_1.json',
+            extraParams: {
+                todo : 'getChartDatas'
+            },
+            reader: {
+                type: 'json',
+                root: 'results',
+                totalProperty: 'totalCount'
+            },
+            simpleSortMode: true
+        },
+        listeners: {
+            load: function(store, records, success) {
+                 var fileNameToSecurityEscape = records[0]['data']['fileNameToSecurityEscape'];
+
+                var scanReportColumnData = [];
+                var keySelected = "";
+                Ext.Object.each(fileNameToSecurityEscape,function(key,value) {
+                    var keyValArr = key.split("/");
+
+                    var name    = keyValArr[keyValArr.length-1];
+                    var data    = value;
+
+                    if(keySelected == "")
+                        keySelected = name;
+
+                    scanReportColumnData.push({"name":name,"data":data});
+                });
+
+                scanReportColumnDataStore.loadData(scanReportColumnData);
+
+                var fileNameToSecurityTypeToEscapeArr = scanReportAllDataStore.data.items[0].data.fileNameToSecurityTypeToEscape;
+
+                var pieChartDataArr = fileNameToSecurityTypeToEscapeArr[keySelected];
+
+                var scanReporPieData = [];
+                Ext.Object.each(pieChartDataArr,function(key,value) {
+                     var name    = key;
+                    if(key == "_EMAIL")
+                        name    = "Email Id";
+                    if(key == "_SSN")
+                        name    = "SSN";
+                    if(key == "_PHONE")
+                        name    = "Ph No";
+                    if(key == "_CREDITCARD")
+                        name    = "Credit";
+
+                    var data    = value;
+
+                    scanReporPieData.push({"name":name,"data":data});
+                });
+
+                scanReportDataStore.loadData(scanReporPieData);
+                Ext.get("scanReportPieChartLblTitle").update("File Results of "+keySelected);
+
+                var series = scanReportColumnChart.series.get(0);
+
+                if(selectedStoreItem == false) {
+                    selectedStoreItem = series.items[0].storeItem;
+                    selectItem(selectedStoreItem);
+                }
+                else if( series.items[0].storeItem.get("name") != selectedStoreItem.get("name")) {
+                    selectedStoreItem = series.items[0].storeItem;   
+                    selectItem(selectedStoreItem);
+                }
+                var creditcard_portletData = {totalCreditCardNum: DATARITY.app.formatNumber(scanReportAllDataStore.data.items[0].data.totalCreditCardNum)};
+                Ext.getCmp("creditcard_portlet").update(creditcard_portletData);
+
+                var ssn_portletData = {totalSsnNum: DATARITY.app.formatNumber(scanReportAllDataStore.data.items[0].data.totalSsnNum)};
+                Ext.getCmp("ssn_portlet").update(ssn_portletData);
+
+                var phoneno_portletData = {totalPhoneNum: DATARITY.app.formatNumber(scanReportAllDataStore.data.items[0].data.totalPhoneNum)};
+                Ext.getCmp("phoneno_portlet").update(phoneno_portletData);
+
+                var email_colData = {totalEmailId: DATARITY.app.formatNumber(scanReportAllDataStore.data.items[0].data.totalEmailId)};
+                Ext.getCmp("email_col").update(email_colData);
+
+            }
+        }
+    });
+
+   
     Ext.define('scanReportData', {
         extend: 'Ext.data.Model',
         fields: [
@@ -7,11 +114,13 @@
     });
 
     // create the Data Store
-    var scanReportDataStore = Ext.create('Ext.data.JsonStore', {
+    var scanReportDataStore = Ext.create('Ext.data.Store', {
         id: 'scanReportDataStore',
         model: 'scanReportData',
-        autoLoad:true,
-        proxy: {
+        autoLoad:false,
+        simpleSortMode: true,
+        data : []
+       /* proxy: {
             type: 'ajax',
             actionMethods: {
                 read: 'POST'
@@ -26,7 +135,7 @@
                 totalProperty: 'totalCount'
             },
             simpleSortMode: true
-        }
+        }*/
     });
 
     var donut = false;
@@ -73,21 +182,19 @@
                 contrast: true,
                 font: '18px Arial'
             }
-        }]
+        }],
+        listeners : {
+            click : function(_) {
+
+            }
+        }
     });
 
 Ext.define('scanReportColumnData', {
         extend: 'Ext.data.Model',
         fields: [
             {name: 'name', mapping: 'name', type: 'string'},
-            {name: 'data1',  type: 'int'},
-            {name: 'data2',  type: 'int'},
-            {name: 'data3',  type: 'int'},
-            {name: 'data4',  type: 'int'},
-            {name: 'data5',  type: 'int'},
-            {name: 'data6',  type: 'int'},
-            {name: 'data7',  type: 'int'},
-            {name: 'data8',  type: 'int'}
+            {name: 'data',  type: 'int'}
         ]
     });
 
@@ -95,7 +202,9 @@ Ext.define('scanReportColumnData', {
     var scanReportColumnDataStore = Ext.create('Ext.data.JsonStore', {
         id: 'scanReportColumnDataStore',
         model: 'scanReportColumnData',
-        autoLoad:true,
+         simpleSortMode: true,
+        data : []
+       /* autoLoad:true,
         proxy: {
             type: 'ajax',
             actionMethods: {
@@ -111,22 +220,43 @@ Ext.define('scanReportColumnData', {
                 totalProperty: 'totalCount'
             },
             simpleSortMode: true
-        }
+        }*/
     });
+
+    var selectedStoreItem = false;
+    //performs the highlight of an item in the bar series
+    var selectItem = function(storeItem) {
+        var name = storeItem.get('name'),
+            series = scanReportColumnChart.series.get(0),
+            i, items, l;
+        
+        series.highlight = true;
+        series.unHighlightItem();
+        series.cleanHighlights();
+        for (i = 0, items = series.items, l = items.length; i < l; i++) {
+            if (name == items[i].storeItem.get('name')) {
+                selectedStoreItem = items[i].storeItem;
+                series.highlightItem(items[i]);
+                break;
+            }
+        }
+        series.highlight = false;
+    };
+
  var scanReportColumnChart = Ext.create('Ext.chart.Chart', {
-        style: 'background:#fff',
+        //style: 'background:#fff',
         animate: true,
         shadow: true,
+        border:false,
          width:500,
          height:350,
+         cls: 'x-panel-body-default',
         store: scanReportColumnDataStore,
+
         axes: [{
             type: 'Numeric',
             position: 'left',
-            fields: ['data1'],
-            label: {
-                renderer: Ext.util.Format.numberRenderer('0,0')
-            },
+            fields: ['data'],
             title: 'Number of PIIs',
             grid: true,
             minimum: 0
@@ -134,37 +264,104 @@ Ext.define('scanReportColumnData', {
             type: 'Category',
             position: 'bottom',
             fields: ['name'],
-            title: 'Directory Report'
+            title: 'Directory Report',
+             label: {
+               // renderer: Ext.util.Format.numberRenderer('0,0')
+                renderer: function(v) {
+                    return Ext.String.ellipsis(v, 15, false);
+                },
+                rotate: {
+                    degrees: 270
+                }
+            },
         }],
         series: [{
             type: 'column',
             axis: 'left',
-            highlight: true,
+            
+            highlight: false,
+            style: {
+                fill: '#456d9f'
+            },
+           
             tips: {
                 trackMouse: true,
                 width: 140,
                 height: 28,
                 renderer: function(storeItem, item) {
-                    this.setTitle(storeItem.get('name') + ': ' + storeItem.get('data1') + 'K');
+                    this.setTitle(storeItem.get('name') + ': ' + storeItem.get('data') + 'K');
                 }
             },
             label: {
                 display: 'insideEnd',
                 'text-anchor': 'middle',
-                field: 'data1',
+                field: 'data',
                 renderer: Ext.util.Format.numberRenderer('0'),
                 orientation: 'vertical',
                 color: '#333'
             },
+            listeners: {
+                itemmouseup: function(item) {
+                     if(selectedStoreItem == false) 
+                         selectedStoreItem = item.storeItem;
+                    else if(item.storeItem.get("name") == selectedStoreItem.get("name"))
+                        return true;
+
+                    //if(item.storeItem.get("name") != selectedStoreItem.get("name")) {
+                        selectedStoreItem = item.storeItem;
+
+                        var valueArr = item.value;
+                        var name    = valueArr[0];
+                        
+                        var fileNameToSecurityTypeToEscapeArr = scanReportAllDataStore.data.items[0].data.fileNameToSecurityTypeToEscape;
+
+                        var pieChartDataArr = fileNameToSecurityTypeToEscapeArr[name];
+
+                        var scanReporPieData = [];
+                        Ext.Object.each(pieChartDataArr,function(key,value) {
+                             var name    = key;
+                            if(key == "_EMAIL")
+                                name    = "Email Id";
+                            if(key == "_SSN")
+                                name    = "SSN";
+                            if(key == "_PHONE")
+                                name    = "Ph No";
+                            if(key == "_CREDITCARD")
+                                name    = "Credit";
+
+                            var data    = value;
+
+                            scanReporPieData.push({"name":name,"data":data});
+                        });
+
+                        Ext.get("scanReportPieChartLblTitle").update("File Results of "+name);
+
+                        scanReportDataStore.loadData(scanReporPieData);
+
+                        selectItem(selectedStoreItem);
+                    //}
+                }/*,
+                itemmousedown: function(el) {
+                    var series = this.chart.series.get(0);
+                    series.highlight = true;
+                    series.unHighlightItem();
+                    series.cleanHighlights();
+
+                    series.highlightItem(el);
+                    series.highlight = false;
+                }*/
+            },
             xField: 'name',
-            yField: 'data1'
+            yField: 'data'
         }]
     });
+
+   
 Ext.define('DATARITY.view.PortletPanel', {
     extend: 'DATARITY.view.portal.PortalPanel',    
     
     alias: 'widget.portletpanel',
-     border:false,
+    border:false,
      
     getTools: function(){
         return [{
@@ -187,7 +384,7 @@ Ext.define('DATARITY.view.PortletPanel', {
        var creditcard_tpl =  new Ext.XTemplate(
                         '<div><div class="dashboard-stat blue" style="background-color: #27a9e3;">',
                         '<div class="visual"><i class="fa fa-comments"></i></div>',
-                        '<div class="details"><div class="number">35K +</div><div class="desc">Credit Cards</div></div>',
+                        '<div class="details"><div class="number">{totalCreditCardNum} +</div><div class="desc">Credit Cards</div></div>',
                         '<a class="more" href="#">View details <i class="m-icon-swapright m-icon-white"></i></a></div></div>',
                         { compiled : true }
 
@@ -195,7 +392,7 @@ Ext.define('DATARITY.view.PortletPanel', {
        var ssn_tpl =  new Ext.XTemplate(
                         '<div><div class="dashboard-stat green" style="background-color: #28b779;">',
                         '<div class="visual"><i class="fa fa-shopping-cart"></i></div>',
-                        '<div class="details"><div class="number">20K +</div><div class="desc">SSNs</div></div>',
+                        '<div class="details"><div class="number">{totalSsnNum} +</div><div class="desc">SSNs</div></div>',
                         '<a class="more" href="#">View details <i class="m-icon-swapright m-icon-white"></i></a></div></div>',
                         { compiled : true }
 
@@ -203,7 +400,7 @@ Ext.define('DATARITY.view.PortletPanel', {
        var phoneno_tpl =  new Ext.XTemplate(
                         '<div><div class="dashboard-stat purple" style="background-color: #852b99;">',
                         '<div class="visual"><i class="fa fa-globe"></i></div>',
-                        '<div class="details"><div class="number">950K +</div><div class="desc">Phone Numbers</div></div>',
+                        '<div class="details"><div class="number">{totalPhoneNum} +</div><div class="desc">Phone Numbers</div></div>',
                         '<a class="more" href="#">View details <i class="m-icon-swapright m-icon-white"></i></a></div></div>',
                         { compiled : true }
 
@@ -211,7 +408,7 @@ Ext.define('DATARITY.view.PortletPanel', {
        var email_tpl =  new Ext.XTemplate(
                         '<div> <div class="dashboard-stat yellow" style="background-color: #ffb848;">',
                         '<div class="visual"><i class="fa fa-bar-chart-o"></i></div>',
-                        '<div class="details"><div class="number">12M</div><div class="desc">EMail Ids</div></div>',
+                        '<div class="details"><div class="number">{totalEmailId}</div><div class="desc">EMail Ids</div></div>',
                         '<a class="more" href="#">View details <i class="m-icon-swapright m-icon-white"></i></a></div></div>',
                         { compiled : true }
 
@@ -288,7 +485,11 @@ Ext.define('DATARITY.view.PortletPanel', {
                     width : 150,
                     frame : true,
                     scale   : 'large',
-                    text : 'Scan'
+                    text : 'Scan',
+                    handler : function () {
+                        scanReportAllDataStore.getProxy().url = './server/dataritysample_2.json';
+                        scanReportAllDataStore.load();
+                    }
                 },{
                     xtype : 'tbspacer',
                     border:false,
@@ -329,7 +530,18 @@ Ext.define('DATARITY.view.PortletPanel', {
                 border:false,
                 height: 350,
                 //title: 'Scan Results 2',
-                items: scanReportPieChart
+                items: [ { 
+                        xtype:'label',
+                       // text:'',
+                       html  :'<div class="portlet-title">'+
+                            '<div class="caption" id="scanReportPieChartLblTitle">'+
+                                'File Results'+
+                            '</div>'+
+                        '</div>',
+                       // html  :'<text zIndex="0" x="0" y="0" text="Directory Report" font="bold 18px Arial" fill="#444" text-anchor="start" transform="matrix(1,0,0,1,218,333.8)" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-weight: bold; font-style: normal; font-variant: normal; font-size: 18px; line-height: normal; font-family: Arial;"><tspan x="0" dy="5.25">Directory Report</tspan></text>',
+                        itemId : 'scanReportPieChartLbl',
+                        width : 400
+                    },scanReportPieChart]
             }]
             
         });
