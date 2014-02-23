@@ -25,8 +25,10 @@ Ext.define('DATARITY.controller.PortletPanel', {
         this.control({
             'button[itemId=scanButton]': {
                 click: 'onScaningProgress'
-            }
-           
+            },
+            'button[itemId=maskButton]': {
+                click: 'onMaskingProgress'
+            }           
         });
         scanReportAllDataStore.load();
     },
@@ -60,6 +62,13 @@ Ext.define('DATARITY.controller.PortletPanel', {
         var url = './server/dataritysample_2.json';
         if(scanReportAllDataStore.getProxy().url == './server/dataritysample_2.json')
             url = './server/dataritysample_1.json';
+        
+        if  (PortletPanelController.maskingRunning == true)
+        {
+             PortletPanelController.maskingRunning = false;
+             url = './server/dataritysample_masked.json';
+
+        }
 
         scanReportAllDataStore.getProxy().url = url;
         scanReportAllDataStore.load();
@@ -67,7 +76,32 @@ Ext.define('DATARITY.controller.PortletPanel', {
         Ext.getCmp('scanProgressBarContainer').setVisible(false);
         PortletPanelController.scanButtonClick =false;
     },
+    
+    onMaskingProgress: function() {
 
+        var PortletPanelController = this;
+        PortletPanelController.maskingRunning = true;
+
+       // if(PortletPanelController.scanTimer != undefined)
+         //clearInterval(PortletPanelController.scanTimer);
+
+        if(PortletPanelController.scanButtonClick  == false || PortletPanelController.scanButtonClick  == undefined){        
+            PortletPanelController.scanButtonClick  =true;
+            scanTimer=setTimeout(function(){PortletPanelController.onScaningProgressStop()},10000);
+            Ext.getCmp('scanProgressBarContainer').setVisible(true);
+            var scanProgressBar= Ext.getCmp('scanProgressBarId');
+            scanProgressBar.wait({
+                interval: 1000, //bar will move fast!
+                duration: 10000,
+                increment: 15,
+                text: 'Masking...',
+                scope: this,
+                fn: function(){
+                    scanProgressBar.updateText('Done!');
+                }
+            });
+        }
+    },
     /*onScaningProgress: function() {
 
         var PortletPanelController = this;

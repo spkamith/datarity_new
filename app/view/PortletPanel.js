@@ -503,6 +503,7 @@ Ext.define('DATARITY.view.PortletPanel', {
                 },{
                     flex : 1,
                     xtype : 'button',
+                    itemId:'maskButton',
                     width : 150,
                     frame : true,
                     scale   : 'large',
