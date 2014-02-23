@@ -57,7 +57,7 @@ Ext.application({
         ];
         for (var i = 0; i < ranges.length; i++) {
             if (n >= ranges[i].divider) {
-                return (n / ranges[i].divider).toString() + ranges[i].suffix;
+                return (Math.round(n / ranges[i].divider)).toString() + ranges[i].suffix;
             }
         }
       return n.toString();
