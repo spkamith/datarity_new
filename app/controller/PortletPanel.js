@@ -32,8 +32,14 @@ Ext.define('DATARITY.controller.PortletPanel', {
     },
 
     onScaningProgress: function() {
+
         var PortletPanelController = this;
-        myVar=setInterval(function(){PortletPanelController.onScaningProgressStop()},10000);
+
+        if(PortletPanelController.myVar != undefined)
+         clearInterval(PortletPanelController.myVar);
+
+        
+        myVar=setTimeout(function(){PortletPanelController.onScaningProgressStop()},10000);
         Ext.getCmp('scanProgressBarContainer').setVisible(true);
         var scanProgressBar= Ext.getCmp('scanProgressBarId');
         scanProgressBar.wait({
@@ -49,11 +55,15 @@ Ext.define('DATARITY.controller.PortletPanel', {
     },
     onScaningProgressStop: function(){
         var PortletPanelController = this;
-        scanReportAllDataStore.getProxy().url = './server/dataritysample_2.json';
+        var url = './server/dataritysample_2.json';
+        if(scanReportAllDataStore.getProxy().url == './server/dataritysample_2.json')
+            url = './server/dataritysample_1.json';
+
+        scanReportAllDataStore.getProxy().url = url;
         scanReportAllDataStore.load();
 
         Ext.getCmp('scanProgressBarContainer').setVisible(false);
-        clearInterval(PortletPanelController.myVar);
+       // clearInterval(PortletPanelController.myVar);
     },
     /*onScanFinishProgress:function(){
         alert(1);
